@@ -1,43 +1,37 @@
-# Step 1: Find the name of the folder of the currently logged in user
-$userFolder = [System.Environment]::UserName
+# 1. Find the folder name of the currently logged in user
+$currentUser = [System.Security.Principal.WindowsIdentity]::GetCurrent().Name.Split("\")[-1]
 
-# Step 2: Display a popup asking the user to enter their email address
-Add-Type -AssemblyName Microsoft.VisualBasic
-$userEmail = [Microsoft.VisualBasic.Interaction]::InputBox("Please enter your email address", "User Email Input")
+# 2. Displays a popup asking the user to enter their email address
+$email = [Microsoft.VisualBasic.Interaction]::InputBox("Please enter your email address", "Email Input", "")
 
-# Step 3: Create C:\temp if it doesn't exist and generate the UserInfo CSV
-$csvPath = "C:\temp"
-$userInfoFile = "$csvPath\UserInfo.csv"
-
-if (-not (Test-Path $csvPath)) {
-    New-Item -ItemType Directory -Path $csvPath
+# 3. Create a CSV named UserInfo in C:\temp
+$csvPath = "C:\temp\UserInfo.csv"
+if (-not (Test-Path "C:\temp")) {
+    New-Item -Path "C:\temp" -ItemType Directory
 }
 
-# Create the CSV with the header and user information
-$userData = @{
-    "Name"  = $userFolder
-    "Email" = $userEmail
-}
-$userData | Export-Csv -Path $userInfoFile -NoTypeInformation
+$csvContent = "$currentUser,$email"
+$csvContent | Out-File -FilePath $csvPath -Force
 
-# Step 5: Create a folder in C:\temp named Profwiz
-$profwizPath = "$csvPath\Profwiz"
-if (-not (Test-Path $profwizPath)) {
-    New-Item -ItemType Directory -Path $profwizPath
+# 4. Creates a folder in C:\temp named Profwiz
+$profwizFolder = "C:\temp\Profwiz"
+if (-not (Test-Path $profwizFolder)) {
+    New-Item -Path $profwizFolder -ItemType Directory
 }
 
-# Step 6: Download the files from Github and copy them to the Profwiz folder
-$filesToDownload = @(
+# 5. Download files from Github and copy them to that folder
+$files = @(
     "https://github.com/statesidebrands/Tools/raw/main/Profwiz.exe",
     "https://raw.githubusercontent.com/statesidebrands/Tools/main/Profwiz.config",
-    "https://raw.githubusercontent.com/statesidebrands/Tools/main/ForensiTAzureID.xml",
+    "https://raw.githubusercontent.com/statesidebrands/Tools/main/ForensiTAzureID.xml"
 )
 
-foreach ($fileUrl in $filesToDownload) {
-    $fileName = Split-Path -Leaf $fileUrl
-    $destinationFile = Join-Path -Path $profwizPath -ChildPath $fileName
-    Invoke-WebRequest -Uri $fileUrl -OutFile $destinationFile
+foreach ($file in $files) {
+    $fileName = [System.IO.Path]::GetFileName($file)
+    $destinationPath = Join-Path -Path $profwizFolder -ChildPath $fileName
+    Invoke-WebRequest -Uri $file -OutFile $destinationPath
 }
 
-# Step 7: Run C:\temp\Profwiz\Profwiz.exe as administrator
-Start-Process -FilePath "$profwizPath\Profwiz.exe" -Verb RunAs
+# 6. Runs C:\temp\Profwiz\Profwiz.exe as administrator
+$profwizExePath = "C:\temp\Profwiz\Profwiz.exe"
+Start-Process -FilePath $profwizExePath -Verb RunAs
