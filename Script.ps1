@@ -14,7 +14,7 @@ if (-not (Test-Path -Path $profwizFolder)) {
 $files = @(
     "https://github.com/statesidebrands/Tools/raw/main/Profwiz.exe",
     "https://raw.githubusercontent.com/statesidebrands/Tools/main/Profwiz.config?token=GHSAT0AAAAAACXCNGOILAN2S24FQLK4XB6SZXASHHQ",
-    "https://raw.githubusercontent.com/statesidebrands/Tools/main/StatesideAzureID.xml",
+    "https://raw.githubusercontent.com/statesidebrands/Tools/main/StatesideAzureID.xml"
 )
 
 foreach ($file in $files) {
