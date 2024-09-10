@@ -1,0 +1,249 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet type='text/xsl' href='style.xsl'?>
+<ForensiTAzureID ObjectId="468cf67c-bce9-4c7a-abb1-025f788488aa" Name="federaldistilling.onmicrosoft.com federaldistilling.com statesidebrands.com statesidebrandspa.onmicrosoft.com" DisplayName="Stateside Brands">
+    <User>
+        <UserPrincipalName>A.Acquaviva@statesidebrands.com</UserPrincipalName>
+        <ObjectId>d1042819-5211-4bce-abf0-721df39ca89b</ObjectId>
+        <DisplayName>Ashley Acquaviva</DisplayName>
+    </User>
+    <User>
+        <UserPrincipalName>A.Allen@statesidebrands.com</UserPrincipalName>
+        <ObjectId>f46bd4bd-e82f-4340-876b-9820f60ed6c4</ObjectId>
+        <DisplayName>Aaron Allen</DisplayName>
+    </User>
+    <User>
+        <UserPrincipalName>A.Barrett@statesidebrands.com</UserPrincipalName>
+        <ObjectId>71357755-384a-4b54-81a5-202af20bd7fe</ObjectId>
+        <DisplayName>Alex Barrett</DisplayName>
+    </User>
+    <User>
+        <UserPrincipalName>A.Hozeska@statesidebrands.com</UserPrincipalName>
+        <ObjectId>6b968fb5-6bc1-4dbc-8f1b-3997abde97e0</ObjectId>
+        <DisplayName>Allison Hozeska</DisplayName>
+    </User>
+    <User>
+        <UserPrincipalName>A.Jarvis@statesidebrands.com</UserPrincipalName>
+        <ObjectId>5935fbe2-9dc7-431b-8946-875440a85e85</ObjectId>
+        <DisplayName>Andrew Jarvis</DisplayName>
+    </User>
+    <User>
+        <UserPrincipalName>a.rapanut@statesidebrands.com</UserPrincipalName>
+        <ObjectId>84029d68-055e-4f41-a883-0d60a06604e2</ObjectId>
+        <DisplayName>Arvin Rapanut</DisplayName>
+    </User>
+    <User>
+        <UserPrincipalName>ACSAdmin@statesidebrands.com</UserPrincipalName>
+        <ObjectId>5b407953-0623-480c-b6bf-5564c1bd6558</ObjectId>
+        <DisplayName>ACS Admin</DisplayName>
+    </User>
+    <User>
+        <UserPrincipalName>B.Avhad@statesidebrands.com</UserPrincipalName>
+        <ObjectId>1145be29-215f-4fce-9ead-300200219acb</ObjectId>
+        <DisplayName>Bhauraw Avhad</DisplayName>
+    </User>
+    <User>
+        <UserPrincipalName>b.bilicki@statesidebrands.com</UserPrincipalName>
+        <ObjectId>dff82dc8-5a2f-4138-9297-2b0e1e014681</ObjectId>
+        <DisplayName>Bobby Bilicki</DisplayName>
+    </User>
+    <User>
+        <UserPrincipalName>B.Sweeney@statesidebrands.com</UserPrincipalName>
+        <ObjectId>8bc3d21a-42e9-4316-b99c-f2ea9fd0c4d6</ObjectId>
+        <DisplayName>Brendan Sweeney</DisplayName>
+    </User>
+    <User>
+        <UserPrincipalName>B.Wynne@statesidebrands.com</UserPrincipalName>
+        <ObjectId>40c2bf7b-4564-44d8-ae03-a9553c2a0bb7</ObjectId>
+        <DisplayName>Brandon Wynne</DisplayName>
+    </User>
+    <User>
+        <UserPrincipalName>Bryan@statesidebrands.com</UserPrincipalName>
+        <ObjectId>e6be80b6-d597-44ba-8a90-96d3b7784d9f</ObjectId>
+        <DisplayName>Bryan Quigley</DisplayName>
+    </User>
+    <User>
+        <UserPrincipalName>bulkenrollment@statesidebrands.com</UserPrincipalName>
+        <ObjectId>5aa82fd5-210d-440c-8619-3cdc88d08b24</ObjectId>
+        <DisplayName>Bulk Enrollment</DisplayName>
+    </User>
+    <User>
+        <UserPrincipalName>c.chamberlain@statesidebrands.com</UserPrincipalName>
+        <ObjectId>1be582c2-8fc7-42c9-b36c-0bcaa7eb5c59</ObjectId>
+        <DisplayName>Christina Chamberlain</DisplayName>
+    </User>
+    <User>
+        <UserPrincipalName>C.Pocopanni@statesidebrands.com</UserPrincipalName>
+        <ObjectId>c1873ef5-da97-4d95-9921-1e34aad79024</ObjectId>
+        <DisplayName>Casey Pocopanni</DisplayName>
+    </User>
+    <User>
+        <UserPrincipalName>c.smith@statesidebrands.com</UserPrincipalName>
+        <ObjectId>1fc55084-966c-430e-bcc9-17d15accb846</ObjectId>
+        <DisplayName>Chris Smith</DisplayName>
+    </User>
+    <User>
+        <UserPrincipalName>clem@statesidebrands.com</UserPrincipalName>
+        <ObjectId>056a2455-e9ee-4c62-8515-536aa3bec899</ObjectId>
+        <DisplayName>Clement Pappas</DisplayName>
+    </User>
+    <User>
+        <UserPrincipalName>cspadmin@statesidebrands.com</UserPrincipalName>
+        <ObjectId>b6320267-4e57-4239-9626-42609e877745</ObjectId>
+        <DisplayName>cspadmin</DisplayName>
+    </User>
+    <User>
+        <UserPrincipalName>D.Binner@federaldistilling.com</UserPrincipalName>
+        <ObjectId>40cdb802-93a2-4d99-8e5c-f09f271ae682</ObjectId>
+        <DisplayName>Desy Binner</DisplayName>
+    </User>
+    <User>
+        <UserPrincipalName>D.Frank@statesidebrands.com</UserPrincipalName>
+        <ObjectId>c69e2eee-b27e-466b-8029-6daca46520d6</ObjectId>
+        <DisplayName>Dane Frank</DisplayName>
+    </User>
+    <User>
+        <UserPrincipalName>D.Levy@statesidebrands.com</UserPrincipalName>
+        <ObjectId>4aca1061-64fb-4cd2-bd7d-53707280bb2c</ObjectId>
+        <DisplayName>Deana Levy</DisplayName>
+    </User>
+    <User>
+        <UserPrincipalName>D.Visokay@statesidebrands.com</UserPrincipalName>
+        <ObjectId>71e07e4e-8a9b-47da-b480-da31fe1334bd</ObjectId>
+        <DisplayName>Daniella Visokay</DisplayName>
+    </User>
+    <User>
+        <UserPrincipalName>E.McGehean@statesidebrands.com</UserPrincipalName>
+        <ObjectId>e09b9fd5-1bb0-40e3-a4f8-b6c62c4a57bf</ObjectId>
+        <DisplayName>Ed McGehean</DisplayName>
+    </User>
+    <User>
+        <UserPrincipalName>G.Sowa@statesidebrands.com</UserPrincipalName>
+        <ObjectId>4b95fe2a-b9ca-41d4-b91f-465ad62584f3</ObjectId>
+        <DisplayName>Grace Sowa</DisplayName>
+    </User>
+    <User>
+        <UserPrincipalName>H.Adler@statesidebrands.com</UserPrincipalName>
+        <ObjectId>d8fc9164-5719-4aa9-94d5-b5d4481bf88d</ObjectId>
+        <DisplayName>Hannah Adler</DisplayName>
+    </User>
+    <User>
+        <UserPrincipalName>h.lebredo@statesidebrands.com</UserPrincipalName>
+        <ObjectId>94e3b3e2-940e-4c6d-b930-5465a3e8e2b0</ObjectId>
+        <DisplayName>Heather Lebredo</DisplayName>
+    </User>
+    <User>
+        <UserPrincipalName>J.Bernstein@statesidebrands.com</UserPrincipalName>
+        <ObjectId>0fb2fc49-96e8-4deb-8efe-8e80534c5c6a</ObjectId>
+        <DisplayName>Josef Bernstein</DisplayName>
+    </User>
+    <User>
+        <UserPrincipalName>J.DiDomenico@statesidebrands.com</UserPrincipalName>
+        <ObjectId>42ddfac6-63e5-4695-a807-7ef1fdfbfe30</ObjectId>
+        <DisplayName>Jared DiDomenico</DisplayName>
+    </User>
+    <User>
+        <UserPrincipalName>j.doe@statesidebrands.com</UserPrincipalName>
+        <ObjectId>9462e311-c013-40b2-a32d-8ce7ce2de744</ObjectId>
+        <DisplayName>John Doe</DisplayName>
+    </User>
+    <User>
+        <UserPrincipalName>J.Gregory@statesidebrands.com</UserPrincipalName>
+        <ObjectId>884f8242-a4e9-44ef-a1f4-71a0a78cd50a</ObjectId>
+        <DisplayName>Jason Gregory</DisplayName>
+    </User>
+    <User>
+        <UserPrincipalName>j.romano@statesidebrands.com</UserPrincipalName>
+        <ObjectId>4c75793f-5f6a-4a95-b896-cd599efd9aff</ObjectId>
+        <DisplayName>Jim Romano</DisplayName>
+    </User>
+    <User>
+        <UserPrincipalName>k.aron@statesidebrands.com</UserPrincipalName>
+        <ObjectId>ecdf3faf-c982-411e-9e0d-e5b5fffc3557</ObjectId>
+        <DisplayName>Karrsen Aron</DisplayName>
+    </User>
+    <User>
+        <UserPrincipalName>M.Drzik@statesidebrands.com</UserPrincipalName>
+        <ObjectId>1065084b-3dd2-497b-9520-9411edd13b24</ObjectId>
+        <DisplayName>Max Drzik</DisplayName>
+    </User>
+    <User>
+        <UserPrincipalName>M.Sergas@statesidebrands.com</UserPrincipalName>
+        <ObjectId>d479751f-830e-4323-a10a-2890c36bcc20</ObjectId>
+        <DisplayName>Miranda Sergas</DisplayName>
+    </User>
+    <User>
+        <UserPrincipalName>M.Zandanel@statesidebrands.com</UserPrincipalName>
+        <ObjectId>f0b1dd41-39c9-4d1e-b8e5-a8c555477870</ObjectId>
+        <DisplayName>Mike Zandanel</DisplayName>
+    </User>
+    <User>
+        <UserPrincipalName>n.mansfield@statesidebrands.com</UserPrincipalName>
+        <ObjectId>c44db248-317e-4ba5-b78a-0961d74c8a88</ObjectId>
+        <DisplayName>Nathan Mansfield</DisplayName>
+    </User>
+    <User>
+        <UserPrincipalName>P.Luzi@statesidebrands.com</UserPrincipalName>
+        <ObjectId>3c650edc-d854-48af-8632-ff9e2b72426c</ObjectId>
+        <DisplayName>Phil Luzi</DisplayName>
+    </User>
+    <User>
+        <UserPrincipalName>r.every@statesidebrands.com</UserPrincipalName>
+        <ObjectId>d2100d7c-2fa8-4a55-9cf3-5e09acb21788</ObjectId>
+        <DisplayName>RJ Every</DisplayName>
+    </User>
+    <User>
+        <UserPrincipalName>R.Penke@statesidebrands.com</UserPrincipalName>
+        <ObjectId>246502c9-178b-45bf-bd46-b2ac8b89129b</ObjectId>
+        <DisplayName>Ryan Penke</DisplayName>
+    </User>
+    <User>
+        <UserPrincipalName>r.stults@statesidebrands.com</UserPrincipalName>
+        <ObjectId>4f96dfb0-212e-44b2-a13d-d54adf728950</ObjectId>
+        <DisplayName>Ryan Stults</DisplayName>
+    </User>
+    <User>
+        <UserPrincipalName>R.Woodford@statesidebrands.com</UserPrincipalName>
+        <ObjectId>30103bd6-38ec-4c89-a694-c2907ac677e1</ObjectId>
+        <DisplayName>Randy Woodford</DisplayName>
+    </User>
+    <User>
+        <UserPrincipalName>STATESIDE-CONF-MATT@statesidebrands.com</UserPrincipalName>
+        <ObjectId>f5d28786-88fb-4143-8131-8d6f6135e44a</ObjectId>
+        <DisplayName>STATESIDE-CONF-MATT</DisplayName>
+    </User>
+    <User>
+        <UserPrincipalName>T.Blanch@statesidebrands.com</UserPrincipalName>
+        <ObjectId>2cecc7b6-96f9-4db5-91bf-271f77040824</ObjectId>
+        <DisplayName>Tom Blanch</DisplayName>
+    </User>
+    <User>
+        <UserPrincipalName>t.delaney@statesidebrands.com</UserPrincipalName>
+        <ObjectId>1be97684-99db-4a3b-8f58-fab52b7a56c1</ObjectId>
+        <DisplayName>Taylor Delaney</DisplayName>
+    </User>
+    <User>
+        <UserPrincipalName>T.Pender@statesidebrands.com</UserPrincipalName>
+        <ObjectId>7f9219d2-ef0e-486f-b5cb-890776852dae</ObjectId>
+        <DisplayName>Tim Pender</DisplayName>
+    </User>
+    <User>
+        <UserPrincipalName>T.Wells@statesidebrands.com</UserPrincipalName>
+        <ObjectId>2f337efd-2d97-4e80-bf4c-14c2b42f36b6</ObjectId>
+        <DisplayName>Travis Wells</DisplayName>
+    </User>
+    <User>
+        <UserPrincipalName>v.minnucci@statesidebrands.com</UserPrincipalName>
+        <ObjectId>aa835834-1684-4dc2-b8fa-0ce37d180824</ObjectId>
+        <DisplayName>Vince Minnucci</DisplayName>
+    </User>
+    <User>
+        <UserPrincipalName>W.Allen@statesidebrands.com</UserPrincipalName>
+        <ObjectId>37fd1b25-3376-4454-aa01-bae748dd2a7c</ObjectId>
+        <DisplayName>Walter Allen</DisplayName>
+    </User>
+    <User>
+        <UserPrincipalName>Z.Reindl@statesidebrands.com</UserPrincipalName>
+        <ObjectId>44290cdf-b741-4c1a-9b0e-7aab45b20a0e</ObjectId>
+        <DisplayName>Zoe Reindl</DisplayName>
+    </User>
+</ForensiTAzureID>
