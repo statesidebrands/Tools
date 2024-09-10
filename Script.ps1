@@ -2,6 +2,7 @@
 $userFolder = $env:USERNAME
 
 # 2. Display a popup asking the user to enter their email address
+Add-Type -AssemblyName Microsoft.VisualBasic
 $emailAddress = [Microsoft.VisualBasic.Interaction]::InputBox("Please enter your email address:", "Email Entry", "")
 
 # 3. Create the C:\temp directory if it doesn't exist
