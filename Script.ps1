@@ -13,7 +13,7 @@ if (-not (Test-Path -Path $profwizFolder)) {
 # 3. Download the files from GitHub and copy them to the Profwiz folder
 $files = @(
     "https://github.com/statesidebrands/Tools/raw/main/Profwiz.exe",
-    "https://raw.githubusercontent.com/statesidebrands/Tools/main/Profwiz.config?token=GHSAT0AAAAAACXCNGOILAN2S24FQLK4XB6SZXASHHQ",
+    "https://raw.githubusercontent.com/statesidebrands/Tools/main/Profwiz.config",
     "https://raw.githubusercontent.com/statesidebrands/Tools/main/StatesideAzureID.xml"
 )
 
