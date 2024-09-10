@@ -29,7 +29,7 @@ if (-not (Test-Path -Path $profwizFolder)) {
 $files = @(
     "https://github.com/statesidebrands/Tools/raw/main/Profwiz.exe",
     "https://raw.githubusercontent.com/statesidebrands/Tools/main/Profwiz.config",
-    "https://raw.githubusercontent.com/statesidebrands/Tools/main/ForensiTAzureID.xml"
+    "https://raw.githubusercontent.com/statesidebrands/Tools/main/StatesideAzureID.xml"
 )
 
 foreach ($file in $files) {
