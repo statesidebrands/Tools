@@ -1,25 +1,30 @@
-# 1. Find the folder name of the currently logged in user
-$currentUser = [System.Security.Principal.WindowsIdentity]::GetCurrent().Name.Split("\")[-1]
+# 1. Get the folder name of the currently logged in user
+$userFolder = $env:USERNAME
 
-# 2. Displays a popup asking the user to enter their email address
-$email = [Microsoft.VisualBasic.Interaction]::InputBox("Please enter your email address", "Email Input", "")
+# 2. Display a popup asking the user to enter their email address
+$emailAddress = [Microsoft.VisualBasic.Interaction]::InputBox("Please enter your email address:", "Email Entry", "")
 
-# 3. Create a CSV named UserInfo in C:\temp
-$csvPath = "C:\temp\UserInfo.csv"
-if (-not (Test-Path "C:\temp")) {
-    New-Item -Path "C:\temp" -ItemType Directory
+# 3. Create the C:\temp directory if it doesn't exist
+$tempFolder = "C:\temp"
+if (-not (Test-Path -Path $tempFolder)) {
+    New-Item -ItemType Directory -Path $tempFolder
 }
 
-$csvContent = "$currentUser,$email"
-$csvContent | Out-File -FilePath $csvPath -Force
+# 4. Create a CSV named UserInfo in C:\temp with username and email
+$userInfoCsv = "$tempFolder\UserInfo.csv"
+$userInfo = @"
+Username,Email
+$userFolder,$emailAddress
+"@
+$userInfo | Out-File -FilePath $userInfoCsv -Encoding UTF8
 
-# 4. Creates a folder in C:\temp named Profwiz
-$profwizFolder = "C:\temp\Profwiz"
-if (-not (Test-Path $profwizFolder)) {
-    New-Item -Path $profwizFolder -ItemType Directory
+# 5. Create a folder in C:\temp named Profwiz
+$profwizFolder = "$tempFolder\Profwiz"
+if (-not (Test-Path -Path $profwizFolder)) {
+    New-Item -ItemType Directory -Path $profwizFolder
 }
 
-# 5. Download files from Github and copy them to that folder
+# 6. Download the files from GitHub and copy them to the Profwiz folder
 $files = @(
     "https://github.com/statesidebrands/Tools/raw/main/Profwiz.exe",
     "https://raw.githubusercontent.com/statesidebrands/Tools/main/Profwiz.config",
@@ -28,10 +33,10 @@ $files = @(
 
 foreach ($file in $files) {
     $fileName = [System.IO.Path]::GetFileName($file)
-    $destinationPath = Join-Path -Path $profwizFolder -ChildPath $fileName
-    Invoke-WebRequest -Uri $file -OutFile $destinationPath
+    $destination = "$profwizFolder\$fileName"
+    Invoke-WebRequest -Uri $file -OutFile $destination
 }
 
-# 6. Runs C:\temp\Profwiz\Profwiz.exe as administrator
-$profwizExePath = "C:\temp\Profwiz\Profwiz.exe"
-Start-Process -FilePath $profwizExePath -Verb RunAs
+# 7. Run C:\temp\Profwiz\Profwiz.exe as administrator
+$profwizExe = "$profwizFolder\Profwiz.exe"
+Start-Process $profwizExe -Verb RunAs
