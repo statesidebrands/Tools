@@ -31,7 +31,6 @@ $filesToDownload = @(
     "https://github.com/statesidebrands/Tools/raw/main/Profwiz.exe",
     "https://raw.githubusercontent.com/statesidebrands/Tools/main/Profwiz.config",
     "https://raw.githubusercontent.com/statesidebrands/Tools/main/ForensiTAzureID.xml",
-    "https://github.com/statesidebrands/Tools/raw/main/Stateside.ppkg"
 )
 
 foreach ($fileUrl in $filesToDownload) {
