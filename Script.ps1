@@ -23,10 +23,35 @@ foreach ($file in $files) {
     Invoke-WebRequest -Uri $file -OutFile $destination
 }
 
-# 4. Stops Onedrive and unlinks current user
+# 4. Define the path to the local OneDrive folder
+$onedrivePath = "$env:USERPROFILE\OneDrive" # Change this if your OneDrive path is different
+
+# Check if OneDrive folder exists
+if (-not (Test-Path -Path $onedrivePath)) {
+    Write-Host "OneDrive folder not found at $onedrivePath. Please verify the path."
+    exit
+}
+
+# Recursively go through the files in the OneDrive directory
+Get-ChildItem -Path $onedrivePath -Recurse | ForEach-Object {
+    # Check if the file is an online-only file using the Offline attribute (Attribute 'O')
+    if ($_ -is [System.IO.FileInfo] -and ($_ | Get-ItemProperty -Name Attributes).Attributes -band [System.IO.FileAttributes]::Offline) {
+        # Force download the file by opening and reading it
+        try {
+            Write-Host "Downloading file: $($_.FullName)"
+            # Read the file content to force download (small read just to bring it local)
+            [System.IO.File]::ReadAllBytes($_.FullName) | Out-Null
+        }
+        catch {
+            Write-Host "Failed to download file: $($_.FullName). Error: $_"
+        }
+    }
+}
+
+# 5. Stops Onedrive and unlinks current user
 Stop-Process -name "Onedrive" -Force
 Remove-Item -Path HKCU:\Software\Microsoft\OneDrive\Accounts\* -Recurse
 
-# 5. Run C:\temp\Profwiz\Profwiz.exe as administrator
+# 6. Run C:\temp\Profwiz\Profwiz.exe as administrator
 $profwizExe = "$profwizFolder\Profwiz.exe"
 Start-Process $profwizExe -Verb RunAs
