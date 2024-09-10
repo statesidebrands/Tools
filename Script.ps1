@@ -23,6 +23,10 @@ foreach ($file in $files) {
     Invoke-WebRequest -Uri $file -OutFile $destination
 }
 
-# 4. Run C:\temp\Profwiz\Profwiz.exe as administrator
+# 4. Stops Onedrive and unlinks current user
+Stop-Process -name "Onedrive" -Force
+Remove-Item -Path HKCU:\Software\Microsoft\OneDrive\Accounts\* -Recurse
+
+# 5. Run C:\temp\Profwiz\Profwiz.exe as administrator
 $profwizExe = "$profwizFolder\Profwiz.exe"
 Start-Process $profwizExe -Verb RunAs
