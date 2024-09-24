@@ -250,4 +250,10 @@
         <UserPrincipalName>h.dickson@statesidebrands.com</UserPrincipalName>
         <ObjectId>357279e5-2fc4-4008-81cf-562db6738741</ObjectId>
         <DisplayName>Heidi Dickson</DisplayName>
+    </User>
+    <User>
+        <UserPrincipalName>k.binder@statesidebrands.com</UserPrincipalName>
+        <ObjectId>1110fb0a-77e5-46f8-bdb2-fd382caf3c97</ObjectId>
+        <DisplayName>Kate Binder</DisplayName>
+    </User>
 </ForensiTAzureID>
