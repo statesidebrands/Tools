@@ -246,4 +246,8 @@
         <ObjectId>44290cdf-b741-4c1a-9b0e-7aab45b20a0e</ObjectId>
         <DisplayName>Zoe Reindl</DisplayName>
     </User>
+    <User>
+        <UserPrincipalName>h.dickson@statesidebrands.com</UserPrincipalName>
+        <ObjectId>357279e5-2fc4-4008-81cf-562db6738741</ObjectId>
+        <DisplayName>Heidi Dickson</DisplayName>
 </ForensiTAzureID>
