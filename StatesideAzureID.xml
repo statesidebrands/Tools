@@ -256,9 +256,14 @@
         <ObjectId>1110fb0a-77e5-46f8-bdb2-fd382caf3c97</ObjectId>
         <DisplayName>Kate Binder</DisplayName>
     </User>
-        <User>
+    <User>
         <UserPrincipalName>r.seckinger@statesidebrands.com</UserPrincipalName>
         <ObjectId>44be0f8a-b5c4-4ceb-a8bf-d30a795f715b</ObjectId>
         <DisplayName>Ryan Seckinger</DisplayName>
+    </User>
+    <User>
+        <UserPrincipalName>a.hollar@statesidebrands.com</UserPrincipalName>
+        <ObjectId>989bcce1-3f7d-40e7-8ad0-810978a6b947</ObjectId>
+        <DisplayName>Ashley Hollar</DisplayName>
     </User>
 </ForensiTAzureID>
