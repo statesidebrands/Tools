@@ -138,6 +138,40 @@ Write-Host "Process completed."
 Stop-Process -name "Onedrive" -Force
 Remove-Item -Path HKCU:\Software\Microsoft\OneDrive\Accounts\* -Recurse
 
+# Define the destination path for the exported bookmarks
+$destinationPath = "C:\temp\Bookmarks"
+
+# Create the destination folder if it doesn't exist
+if (!(Test-Path -Path $destinationPath)) {
+    New-Item -ItemType Directory -Path $destinationPath -Force
+}
+
+# Define the output file paths for Edge and Chrome bookmarks
+$edgeOutputFile = "$destinationPath\EdgeBookmarks.json"
+$chromeOutputFile = "$destinationPath\ChromeBookmarks.json"
+
+# Export Edge Bookmarks
+$edgeFavoritesPath = "$env:LOCALAPPDATA\Microsoft\Edge\User Data\Default\Bookmarks"
+
+if (Test-Path $edgeFavoritesPath) {
+    Copy-Item -Path $edgeFavoritesPath -Destination $edgeOutputFile -Force
+    Write-Host "Edge bookmarks have been exported to $edgeOutputFile"
+} else {
+    Write-Host "Edge bookmarks file not found at $edgeFavoritesPath"
+}
+
+# Export Chrome Bookmarks
+$chromeBookmarksPath = "$env:LOCALAPPDATA\Google\Chrome\User Data\Default\Bookmarks"
+
+if (Test-Path $chromeBookmarksPath) {
+    Copy-Item -Path $chromeBookmarksPath -Destination $chromeOutputFile -Force
+    Write-Host "Chrome bookmarks have been exported to $chromeOutputFile"
+} else {
+    Write-Host "Chrome bookmarks file not found at $chromeBookmarksPath"
+}
+
+Write-Host "Bookmark export process completed."
+
 # Run C:\temp\Profwiz\Profwiz.exe as administrator
 $profwizExe = "$profwizFolder\Profwiz.exe"
 Start-Process $profwizExe -Verb RunAs
