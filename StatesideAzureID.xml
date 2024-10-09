@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <?xml-stylesheet type='text/xsl' href='style.xsl'?>
 <ForensiTAzureID ObjectId="468cf67c-bce9-4c7a-abb1-025f788488aa" Name="federaldistilling.onmicrosoft.com federaldistilling.com statesidebrands.com statesidebrandspa.onmicrosoft.com statesidepa.onmicrosoft.com" DisplayName="Stateside Brands">
-       <User>
+    <User>
         <UserPrincipalName>A.Allen@statesidebrands.com</UserPrincipalName>
         <ObjectId>f46bd4bd-e82f-4340-876b-9820f60ed6c4</ObjectId>
         <DisplayName>Aaron Allen</DisplayName>
