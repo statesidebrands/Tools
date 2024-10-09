@@ -1,13 +1,18 @@
+# Initialize an array to hold the log messages
+$logMessages = @()
+
 # Create the C:\temp directory if it doesn't exist
 $tempFolder = "C:\temp"
 if (-not (Test-Path -Path $tempFolder)) {
     New-Item -ItemType Directory -Path $tempFolder
+    $logMessages += "Created directory: $tempFolder"
 }
 
 # Create a folder in C:\temp named Profwiz
 $profwizFolder = "$tempFolder\Profwiz"
 if (-not (Test-Path -Path $profwizFolder)) {
     New-Item -ItemType Directory -Path $profwizFolder
+    $logMessages += "Created directory: $profwizFolder"
 }
 
 # Download the files from GitHub and copy them to the Profwiz folder
@@ -21,157 +26,115 @@ foreach ($file in $files) {
     $fileName = [System.IO.Path]::GetFileName($file)
     $destination = "$profwizFolder\$fileName"
     Invoke-WebRequest -Uri $file -OutFile $destination
+    $logMessages += "Downloaded $file to $destination"
 }
 
-# PowerShell script to stop the "Windows Biometric Service", disable biometric devices and cameras, 
-# delete files in WinBioDatabase folder, and then re-enable the devices and restart the service
-
-# Define the service name
+# Stop the "Windows Biometric Service", disable devices, delete files, and restart the service
 $serviceName = "WbioSrvc"
-
-# Stop the Windows Biometric Service
 $service = Get-Service -Name $serviceName -ErrorAction SilentlyContinue
 
 if ($service.Status -eq 'Running') {
     Stop-Service -Name $serviceName -Force
-    Write-Host "The Windows Biometric Service has been stopped."
+    $logMessages += "The Windows Biometric Service has been stopped."
 } else {
-    Write-Host "The Windows Biometric Service is not running."
+    $logMessages += "The Windows Biometric Service was not running."
 }
 
-# Disable biometric devices using PnPUtil
-Write-Host "Disabling biometric devices in Device Manager..."
-
-# Get list of biometric devices using Device Manager class for Biometric devices (class GUID: {53D29EF7-377C-4D14-864B-EB3A85769359})
+# Disable biometric devices
 $biometricDevices = Get-WmiObject Win32_PnPEntity | Where-Object { $_.PNPClass -eq "Biometric" }
-
 if ($biometricDevices) {
     foreach ($device in $biometricDevices) {
-        # Use the PnPUtil tool to disable each biometric device
         $deviceInstanceId = $device.DeviceID
         $disableCommand = "pnputil /disable-device `"$deviceInstanceId`""
-        
-        # Execute the command to disable the device
         Invoke-Expression $disableCommand
-        
-        Write-Host "Biometric device with Device ID $deviceInstanceId has been disabled."
+        $logMessages += "Biometric device with Device ID $deviceInstanceId has been disabled."
     }
 } else {
-    Write-Host "No biometric devices found in Device Manager."
+    $logMessages += "No biometric devices found."
 }
 
-# Disable camera devices using PnPUtil
-Write-Host "Disabling camera devices in Device Manager..."
-
-# Get list of camera devices using Device Manager class for Image devices (class GUID: {6BDD1FC6-810F-11D0-BEC7-08002BE2092F})
+# Disable camera devices
 $cameraDevices = Get-WmiObject Win32_PnPEntity | Where-Object { $_.PNPClass -eq "Image" -or $_.PNPClass -eq "Camera" }
-
 if ($cameraDevices) {
     foreach ($device in $cameraDevices) {
-        # Use the PnPUtil tool to disable each camera device
         $deviceInstanceId = $device.DeviceID
         $disableCommand = "pnputil /disable-device `"$deviceInstanceId`""
-        
-        # Execute the command to disable the device
         Invoke-Expression $disableCommand
-        
-        Write-Host "Camera device with Device ID $deviceInstanceId has been disabled."
+        $logMessages += "Camera device with Device ID $deviceInstanceId has been disabled."
     }
 } else {
-    Write-Host "No camera devices found in Device Manager."
+    $logMessages += "No camera devices found."
 }
 
-# Delete all files in the folder C:\Windows\System32\WinBioDatabase\
+# Delete files in the WinBioDatabase folder
 $folderPath = "C:\Windows\System32\WinBioDatabase\"
-Write-Host "Deleting all files in $folderPath..."
-
-# Check if the folder exists
 if (Test-Path $folderPath) {
-    # Delete all files in the folder
     Get-ChildItem -Path $folderPath | Remove-Item -Force
-    
-    Write-Host "All files in $folderPath have been deleted."
+    $logMessages += "All files in $folderPath have been deleted."
 } else {
-    Write-Host "The folder $folderPath does not exist."
+    $logMessages += "Folder $folderPath does not exist."
 }
 
-# Re-enable biometric devices using PnPUtil
-Write-Host "Re-enabling biometric devices in Device Manager..."
-
+# Re-enable biometric devices
 if ($biometricDevices) {
     foreach ($device in $biometricDevices) {
-        # Use the PnPUtil tool to re-enable each biometric device
         $deviceInstanceId = $device.DeviceID
         $enableCommand = "pnputil /enable-device `"$deviceInstanceId`""
-        
-        # Execute the command to enable the device
         Invoke-Expression $enableCommand
-        
-        Write-Host "Biometric device with Device ID $deviceInstanceId has been re-enabled."
+        $logMessages += "Biometric device with Device ID $deviceInstanceId has been re-enabled."
     }
 }
 
-# Re-enable camera devices using PnPUtil
-Write-Host "Re-enabling camera devices in Device Manager..."
-
+# Re-enable camera devices
 if ($cameraDevices) {
     foreach ($device in $cameraDevices) {
-        # Use the PnPUtil tool to re-enable each camera device
         $deviceInstanceId = $device.DeviceID
         $enableCommand = "pnputil /enable-device `"$deviceInstanceId`""
-        
-        # Execute the command to enable the device
         Invoke-Expression $enableCommand
-        
-        Write-Host "Camera device with Device ID $deviceInstanceId has been re-enabled."
+        $logMessages += "Camera device with Device ID $deviceInstanceId has been re-enabled."
     }
 }
 
 # Start the Windows Biometric Service again
-Write-Host "Starting the Windows Biometric Service..."
 Start-Service -Name $serviceName
-Write-Host "The Windows Biometric Service has been started."
+$logMessages += "The Windows Biometric Service has been started."
 
-Write-Host "Process completed."
-
-# Stops Onedrive and unlinks current user
+# Stops OneDrive and unlinks the current user
 Stop-Process -name "Onedrive" -Force
 Remove-Item -Path HKCU:\Software\Microsoft\OneDrive\Accounts\* -Recurse
+$logMessages += "OneDrive has been stopped and the user unlinked."
 
-# Define the destination path for the exported bookmarks
+# Create destination folder for exported bookmarks if it doesn't exist
 $destinationPath = "C:\temp\Bookmarks"
-
-# Create the destination folder if it doesn't exist
 if (!(Test-Path -Path $destinationPath)) {
     New-Item -ItemType Directory -Path $destinationPath -Force
+    $logMessages += "Created directory: $destinationPath for bookmarks export."
 }
 
-# Define the output file paths for Edge and Chrome bookmarks
+# Export Edge bookmarks
 $edgeOutputFile = "$destinationPath\EdgeBookmarks.json"
-$chromeOutputFile = "$destinationPath\ChromeBookmarks.json"
-
-# Export Edge Bookmarks
 $edgeFavoritesPath = "$env:LOCALAPPDATA\Microsoft\Edge\User Data\Default\Bookmarks"
-
 if (Test-Path $edgeFavoritesPath) {
     Copy-Item -Path $edgeFavoritesPath -Destination $edgeOutputFile -Force
-    Write-Host "Edge bookmarks have been exported to $edgeOutputFile"
+    $logMessages += "Edge bookmarks have been exported to $edgeOutputFile"
 } else {
-    Write-Host "Edge bookmarks file not found at $edgeFavoritesPath"
+    $logMessages += "Edge bookmarks file not found at $edgeFavoritesPath"
 }
 
-# Export Chrome Bookmarks
+# Export Chrome bookmarks
+$chromeOutputFile = "$destinationPath\ChromeBookmarks.json"
 $chromeBookmarksPath = "$env:LOCALAPPDATA\Google\Chrome\User Data\Default\Bookmarks"
-
 if (Test-Path $chromeBookmarksPath) {
     Copy-Item -Path $chromeBookmarksPath -Destination $chromeOutputFile -Force
-    Write-Host "Chrome bookmarks have been exported to $chromeOutputFile"
+    $logMessages += "Chrome bookmarks have been exported to $chromeOutputFile"
 } else {
-    Write-Host "Chrome bookmarks file not found at $chromeBookmarksPath"
+    $logMessages += "Chrome bookmarks file not found at $chromeBookmarksPath"
 }
 
-Write-Host "Bookmark export process completed."
-
-# Run C:\temp\Profwiz\Profwiz.exe as administrator
+# Run Profwiz.exe as administrator
 $profwizExe = "$profwizFolder\Profwiz.exe"
 Start-Process $profwizExe -Verb RunAs
+$logMessages += "Started Profwiz.exe as administrator."
+
+# Display all log messages at the end
+$logMessages | ForEach-Object { Write-Host $_ }
