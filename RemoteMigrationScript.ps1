@@ -8,6 +8,30 @@ if (-not (Test-Path -Path $tempFolder)) {
     $logMessages += "Created directory: $tempFolder"
 }
 
+# Function to check if OneDrive is installed
+function Check-OneDriveInstalled {
+    $oneDrivePath = "$env:LOCALAPPDATA\Microsoft\OneDrive\OneDrive.exe"
+    return (Test-Path $oneDrivePath)
+}
+
+# Function to install OneDrive using winget
+function Install-OneDrive {
+    Write-Host "Installing OneDrive using winget..."
+    
+    # Use winget to install OneDrive
+    Start-Process -FilePath "winget" -ArgumentList "install microsoft.onedrive -e --silent" -NoNewWindow -Wait
+    
+    Write-Host "OneDrive installation completed."
+}
+
+# Check if OneDrive is installed
+if (Check-OneDriveInstalled) {
+    Write-Host "OneDrive is already installed."
+} else {
+    Write-Host "OneDrive is not installed. Proceeding with installation..."
+    Install-OneDrive
+}
+
 # Stop the "Windows Biometric Service", disable devices, delete files, and restart the service
 $serviceName = "WbioSrvc"
 $service = Get-Service -Name $serviceName -ErrorAction SilentlyContinue
