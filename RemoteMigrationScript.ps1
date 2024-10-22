@@ -105,30 +105,5 @@ if (Test-Path $chromeBookmarksPath) {
     $logMessages += "Chrome bookmarks file not found at $chromeBookmarksPath"
 }
 
-# Check Windows Edition and change product key if it is Windows Home
-$windowsEdition = (Get-WmiObject -Class Win32_OperatingSystem).OperatingSystemSKU
-$isHomeEdition = $false
-
-switch ($windowsEdition) {
-    1 { $editionName = "Windows 10 Home"; $isHomeEdition = $true }
-    101 { $editionName = "Windows 11 Home"; $isHomeEdition = $true }
-    48 { $editionName = "Windows 10 Home Single Language"; $isHomeEdition = $true }
-    98 { $editionName = "Windows 11 Home Single Language"; $isHomeEdition = $true }
-    default { $editionName = "Other Edition"; $isHomeEdition = $false }
-}
-
-$logMessages += "Detected Windows Edition: $editionName"
-
-# If Windows is Home edition, change the product key
-if ($isHomeEdition) {
-    $newProductKey = "NPPR9-FWDCX-D2C8J-H872K-2YT43"
-    Write-Host "Detected Home Edition, changing product key..."
-    Start-Process "changepk.exe" -ArgumentList "/ProductKey", $newProductKey -Wait -NoNewWindow
-    $logMessages += "Product key changed for Home Edition to: $newProductKey"
-} else {
-    $logMessages += "No product key change needed for detected edition: $editionName"
-}
-
-
 # Display all log messages at the end
 $logMessages | ForEach-Object { Write-Host $_ }
